@@ -5,17 +5,26 @@
  */
 package com.mycompany.serpientesescaleras.principal;
 
+import com.mycompany.serpientesescaleras.imagenes.LlenadorImagenes;
+
 /**
  *
  * @author nroda
  */
 public class Comienzo extends javax.swing.JFrame {
 
+    //Atributos
+    LlenadorImagenes llenador = new LlenadorImagenes();
     /**
      * Creates new form Comienzo
      */
     public Comienzo() {
         initComponents();
+        this.setTitle("Serpientes y Escaleras");
+        this.setVisible(true);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.jLabel1.setIcon(llenador.editarFondo(jLabel1));
     }
 
     /**
@@ -28,10 +37,12 @@ public class Comienzo extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,6 +94,7 @@ public class Comienzo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

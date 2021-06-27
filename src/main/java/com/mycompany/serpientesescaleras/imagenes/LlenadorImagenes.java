@@ -19,7 +19,7 @@ public class LlenadorImagenes {
     //Metodos
     
     public Icon editarFondo(JLabel fondo){
-        ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/ImagenesJuego/Imagen1.jpg"));
+        ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/ImagenesJuego/Imagen2.jpg"));
         Icon fondoImagen = new ImageIcon(imagenFondo.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_DEFAULT));
         return fondoImagen;
     }
