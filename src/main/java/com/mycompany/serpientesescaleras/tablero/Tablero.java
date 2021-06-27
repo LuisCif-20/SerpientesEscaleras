@@ -3,16 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.serpientesescaleras.principal;
+package com.mycompany.serpientesescaleras.tablero;
 
 /**
  *
  * @author nroda
  */
-public class Principal {
+public class Tablero {
+    
+    //Atributos
     
     
-    public static void main(String[] args) {
-        Principio principio = new Principio();
-    }
+    //Constructor
+    
+    
+    //Metodos
+    
+    
+    //Getters y Setters
 }
