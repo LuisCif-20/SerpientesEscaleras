@@ -18,7 +18,7 @@ public class LlenadorImagenes {
     
     //Metodos
     
-    public Icon editarFondo(JLabel fondo){
+    public Icon editarFondo(JLabel fondo){//Cambia el fondo del JFrame
         ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/ImagenesJuego/Imagen2.jpg"));
         Icon fondoImagen = new ImageIcon(imagenFondo.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_DEFAULT));
         return fondoImagen;

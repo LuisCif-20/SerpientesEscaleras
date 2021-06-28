@@ -11,14 +11,14 @@ import com.mycompany.serpientesescaleras.imagenes.LlenadorImagenes;
  *
  * @author nroda
  */
-public class Comienzo extends javax.swing.JFrame {
+public class Menu extends javax.swing.JFrame {
 
     //Atributos
     LlenadorImagenes llenador = new LlenadorImagenes();
     /**
      * Creates new form Comienzo
      */
-    public Comienzo() {
+    public Menu() {
         initComponents();
         this.setTitle("Serpientes y Escaleras");
         this.setVisible(true);
@@ -75,20 +75,21 @@ public class Comienzo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Comienzo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Comienzo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Comienzo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Comienzo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Comienzo().setVisible(true);
+                new Menu().setVisible(true);
             }
         });
     }
