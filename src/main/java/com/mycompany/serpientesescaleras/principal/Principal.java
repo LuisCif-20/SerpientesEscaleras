@@ -5,16 +5,16 @@
  */
 package com.mycompany.serpientesescaleras.principal;
 
+import java.io.Serializable;
+
 /**
  *
  * @author nroda
  */
-public class Principal {
+public class Principal implements Serializable{
     
     
-    public static void main(String[] args) {
-        String sSistemaOperativo = System.getProperty("os.name");
-        System.out.println(sSistemaOperativo);
-        //Principio principio = new Principio();
+    public static void main(String[] args)  {
+        Principio principio = new Principio();
     }
 }

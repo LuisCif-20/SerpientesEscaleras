@@ -5,11 +5,13 @@
  */
 package com.mycompany.serpientesescaleras.jugadores;
 
+import java.io.Serializable;
+
 /**
  *
  * @author nroda
  */
-public class Jugador {
+public class Jugador implements Serializable{
     
     //Atributos
     private int idJugador;
