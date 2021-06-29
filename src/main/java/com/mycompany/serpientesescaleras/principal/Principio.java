@@ -170,8 +170,8 @@ public class Principio extends javax.swing.JFrame {
         int seleccion = fc.showOpenDialog(this);
         //Indica que el usuario selecciono el directorio
         if (seleccion == JFileChooser.APPROVE_OPTION) {
-            CreadorCargadorArchivos.setDIRECTORIO(fc.getCurrentDirectory().getAbsolutePath());
-            System.out.println(fc.getCurrentDirectory().getAbsolutePath());
+            CreadorCargadorArchivos.setDIRECTORIO(fc.getSelectedFile().getAbsolutePath());
+            System.out.println(fc.getSelectedFile().getAbsoluteFile());
             SEGUIR = 1;
         }
 

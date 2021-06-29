@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 public class Jugador implements Serializable{
     
+    
     //Atributos
     private int idJugador;
     private String nombreJugador;

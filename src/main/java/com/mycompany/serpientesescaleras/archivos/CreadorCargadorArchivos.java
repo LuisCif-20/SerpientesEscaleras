@@ -17,27 +17,54 @@ public class CreadorCargadorArchivos implements Serializable {
     private static String ID;
     private static String DIRECTORIO;
 
+    //Guarda la informacion de cada Jugador Ingresado
     public static void AlmacenarInfoJugador(int id, Jugador datos) throws FileNotFoundException, IOException {
         ID = id + ".ply";
-        try ( ObjectOutputStream archivoguardar = new ObjectOutputStream(new FileOutputStream(DIRECTORIO + ID))) {
+        try ( ObjectOutputStream archivoguardar = new ObjectOutputStream(new FileOutputStream(DIRECTORIO + File.separator + ID))) {
                 archivoguardar.writeObject(datos);
                 archivoguardar.flush();
             }
 
     }
-
-    public static Object CargarInfo(int numero) throws FileNotFoundException, IOException, ClassNotFoundException {
+    //Carga la informacion de cada jugador
+    public static Jugador CargarInfo(int numero) throws FileNotFoundException, IOException, ClassNotFoundException {
         ID = numero + ".ply";
-        File archivocargar = new File(DIRECTORIO + ID);
+        File archivocargar = new File(DIRECTORIO + File.separator + ID);
             if (archivocargar.exists()) {
                 FileInputStream archivoacargar = new FileInputStream(archivocargar);
                 ObjectInputStream infocargada = new ObjectInputStream(archivoacargar);
-                return infocargada.readObject();
+                return (Jugador)infocargada.readObject();
             } else {
                 return null;
             }
 
     }
+    
+    //Guarda la informacion de cada Jugador Ingresado
+    public static void AlmacenarLista(int id, Jugador datos) throws FileNotFoundException, IOException {
+        ID = id + ".ply";
+        try ( ObjectOutputStream archivoguardar = new ObjectOutputStream(new FileOutputStream(DIRECTORIO + File.separator + ID))) {
+                archivoguardar.writeObject(datos);
+                archivoguardar.flush();
+            }
+
+    }
+    //Carga la informacion de cada jugador
+    public static Jugador CargarLista(int numero) throws FileNotFoundException, IOException, ClassNotFoundException {
+        ID = numero + ".ply";
+        File archivocargar = new File(DIRECTORIO + File.separator + ID);
+            if (archivocargar.exists()) {
+                FileInputStream archivoacargar = new FileInputStream(archivocargar);
+                ObjectInputStream infocargada = new ObjectInputStream(archivoacargar);
+                return (Jugador)infocargada.readObject();
+            } else {
+                return null;
+            }
+
+    }
+ 
+    
+    
     
     //Getters y Setter
 

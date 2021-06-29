@@ -25,7 +25,7 @@ public class ListaJugadores {
     
     //Metodos
     
-    public void agregarJugador(Jugador jugador){
+    public static void agregarJugador(Jugador jugador){
         ListaJugadores.listaJugador.add(jugador);
     }
     

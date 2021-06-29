@@ -6,6 +6,8 @@
 package com.mycompany.serpientesescaleras.principal;
 
 import com.mycompany.serpientesescaleras.imagenes.LlenadorImagenes;
+import com.mycompany.serpientesescaleras.jugadores.Login;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,10 +56,25 @@ public class Menu extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 204, 0));
 
         jButton1.setText("2 Jugadores");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("3 Jugadores");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("4 Jugadores");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Maiandra GD", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -138,7 +155,49 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    //Permite la Entrada de solo dos jugadores
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        this.darInstruccion(2);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+    //Permite la entrada de 3 jugadores
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.darInstruccion(3);
+    }//GEN-LAST:event_jButton2ActionPerformed
+    //Permite la entrada de 4 jugadores
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.darInstruccion(4);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
+    public void darInstruccion(int num){
+        this.setVisible(false);
+        switch (num) {
+            case 2:
+                {
+                    JOptionPane.showMessageDialog(null, "Si uno o los dos no tienen ID, ingresen a la opcion (Ingresar Jugador)");
+                    Login login = new Login(num);
+                    break;
+                }
+            case 3:
+                {
+                    JOptionPane.showMessageDialog(null, "Si uno o los cuatro no tienen ID, ingresen a la opcion (Ingresar Jugador)");
+                    Login login = new Login(4);
+                    break;
+                }
+            case 4:
+                {
+                    JOptionPane.showMessageDialog(null, "Si uno o los cuatro no tienen ID, ingresen a la opcion (Ingresar Jugador)");
+                    Login login = new Login(4);
+                    break;
+                }
+            default:
+                break;
+        }
+    }
     /**
      * @param args the command line arguments
      */

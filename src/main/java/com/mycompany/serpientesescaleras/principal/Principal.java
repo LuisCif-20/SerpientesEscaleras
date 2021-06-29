@@ -5,6 +5,7 @@
  */
 package com.mycompany.serpientesescaleras.principal;
 
+
 import java.io.Serializable;
 
 /**
@@ -15,6 +16,7 @@ public class Principal implements Serializable{
     
     
     public static void main(String[] args)  {
-        Principio principio = new Principio();
+        //Principio principio = new Principio();
+
     }
 }
