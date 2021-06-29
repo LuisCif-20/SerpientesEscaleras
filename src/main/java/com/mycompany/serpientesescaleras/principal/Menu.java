@@ -158,7 +158,6 @@ public class Menu extends javax.swing.JFrame {
     //Permite la Entrada de solo dos jugadores
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
         this.darInstruccion(2);
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -184,14 +183,14 @@ public class Menu extends javax.swing.JFrame {
                 }
             case 3:
                 {
-                    JOptionPane.showMessageDialog(null, "Si uno o los cuatro no tienen ID, ingresen a la opcion (Ingresar Jugador)");
-                    Login login = new Login(4);
+                    JOptionPane.showMessageDialog(null, "Si uno o los tres no tienen ID, ingresen a la opcion (Ingresar Jugador)");
+                    Login login = new Login(num);
                     break;
                 }
             case 4:
                 {
                     JOptionPane.showMessageDialog(null, "Si uno o los cuatro no tienen ID, ingresen a la opcion (Ingresar Jugador)");
-                    Login login = new Login(4);
+                    Login login = new Login(num);
                     break;
                 }
             default:

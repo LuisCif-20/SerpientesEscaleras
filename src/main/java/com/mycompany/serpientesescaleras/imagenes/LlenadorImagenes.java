@@ -24,6 +24,12 @@ public class LlenadorImagenes {
         return fondoImagen;
     }
     
+    public Icon editarFlecha(JButton fondo){
+        ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/ImagenesJuego/Regreso.png"));
+        Icon fondoImagen = new ImageIcon(imagenFondo.getImage().getScaledInstance(fondo.getWidth(), fondo.getHeight(), Image.SCALE_DEFAULT));
+        return fondoImagen;
+    }
+    
     //Getters y setters
 
     

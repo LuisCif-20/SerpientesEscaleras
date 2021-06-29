@@ -7,6 +7,10 @@ package com.mycompany.serpientesescaleras.jugadores;
 
 import com.mycompany.serpientesescaleras.archivos.CreadorCargadorArchivos;
 import com.mycompany.serpientesescaleras.archivos.GeneradorID;
+import com.mycompany.serpientesescaleras.excepciones.ExceptionVacio;
+import com.mycompany.serpientesescaleras.excepciones.ManejadorExcepciones;
+import com.mycompany.serpientesescaleras.imagenes.LlenadorImagenes;
+import com.mycompany.serpientesescaleras.principal.Menu;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -19,21 +23,30 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame implements Serializable {
 
+    //Atributos
+    private final int numero;
+    private final LlenadorImagenes llenar = new LlenadorImagenes();
+
     /**
      * Creates new form Login
+     *
+     * @param num
      */
     public Login(int num) {
+        numero = num;
         initComponents();
         this.setVisible(true);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         //Muestra los campos disponibles dependiendo de el numero ingresado
-        if (num == 2) {
+        if (numero == 2) {
             this.jFormattedTextField3.setEnabled(false);
             this.jFormattedTextField4.setEnabled(false);
-        } else if (num == 3){
+        } else if (numero == 3) {
             this.jFormattedTextField4.setEnabled(false);
         }
+        this.jButton3.setToolTipText("Regresar");
+        this.jButton3.setIcon(llenar.editarFlecha(this.jButton3));
     }
 
     /**
@@ -58,6 +71,7 @@ public class Login extends javax.swing.JFrame implements Serializable {
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +94,12 @@ public class Login extends javax.swing.JFrame implements Serializable {
         jLabel4.setText("Jugador 4");
 
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+
+        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+
+        jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+
+        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
 
         jLabel5.setFont(new java.awt.Font("Maiandra GD", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -117,6 +137,18 @@ public class Login extends javax.swing.JFrame implements Serializable {
         jButton2.setFont(new java.awt.Font("Maiandra GD", 0, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("¡A Jugar!");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(0, 0, 0));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,7 +176,8 @@ public class Login extends javax.swing.JFrame implements Serializable {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(140, 140, 140))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -155,8 +188,11 @@ public class Login extends javax.swing.JFrame implements Serializable {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel5))
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -197,23 +233,78 @@ public class Login extends javax.swing.JFrame implements Serializable {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int id = 0;
+        boolean vacio = true;
+        String nombre = JOptionPane.showInputDialog(null, "Ingresa tu nombre");
+        String apellido = JOptionPane.showInputDialog(null, "Ingresa tu apellido");
         try {
-            id = GeneradorID.brindarIdCreado();
-        } catch (IOException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            ManejadorExcepciones.evaluarSiEstaVacio(nombre, apellido);
+        } catch (ExceptionVacio ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            vacio = false;
         }
-        Jugador jugador = new Jugador(id, JOptionPane.showInputDialog(null, "Ingresa tu nombre"),JOptionPane.showInputDialog(null,"Ingresa tu apellido") );
-        try {
-            CreadorCargadorArchivos.AlmacenarInfoJugador(id, jugador);
-        } catch (IOException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        if (vacio == true) {
+            int id = 0;
+            try {
+                id = GeneradorID.brindarIdCreado();
+            } catch (IOException | ClassNotFoundException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Jugador jugador = new Jugador(id, nombre, apellido);
+            try {
+                CreadorCargadorArchivos.AlmacenarInfoJugador(id, jugador);
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ListaJugadores.agregarJugador(jugador);
+            JOptionPane.showMessageDialog(null, "Tu id es: " + id);
         }
-        ListaJugadores.agregarJugador(jugador);
-        JOptionPane.showMessageDialog(null, "Tu id es: " + id);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Menu menu = new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        boolean vacio = false;
+
+        switch (numero) {
+            case 2:
+                try {
+                ManejadorExcepciones.evaluarCampoVacioId(jFormattedTextField1.getText(), jFormattedTextField2.getText());
+            } catch (ExceptionVacio ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+                vacio = true;
+            }
+            break;
+            case 3:
+                try {
+                ManejadorExcepciones.evaluarCampoVacioId(jFormattedTextField1.getText(), jFormattedTextField2.getText(), jFormattedTextField3.getText());
+            } catch (ExceptionVacio ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+                vacio = true;
+            }
+            break;
+            case 4:
+                try {
+                ManejadorExcepciones.evaluarCampoVacioId(jFormattedTextField1.getText(), jFormattedTextField2.getText(), jFormattedTextField3.getText(), jFormattedTextField4.getText());
+            } catch (ExceptionVacio ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+                vacio = true;
+            }
+            break;
+            default:
+                break;
+        }
+        if (vacio == false) {
+            Menu menu = new Menu();
+            this.setVisible(false);
+            menu.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,6 +343,7 @@ public class Login extends javax.swing.JFrame implements Serializable {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JFormattedTextField jFormattedTextField3;
