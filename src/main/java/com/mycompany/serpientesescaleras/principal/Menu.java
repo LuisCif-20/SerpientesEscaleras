@@ -171,7 +171,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.darInstruccion(4);
     }//GEN-LAST:event_jButton3ActionPerformed
-
+//Muestra etiquetas de ayuda
     public void darInstruccion(int num){
         this.setVisible(false);
         switch (num) {

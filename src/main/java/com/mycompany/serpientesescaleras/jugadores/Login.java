@@ -233,6 +233,7 @@ public class Login extends javax.swing.JFrame implements Serializable {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //Pide el nombre y el apellido para crear el archivo binario
         boolean vacio = true;
         String nombre = JOptionPane.showInputDialog(null, "Ingresa tu nombre");
         String apellido = JOptionPane.showInputDialog(null, "Ingresa tu apellido");
@@ -259,14 +260,14 @@ public class Login extends javax.swing.JFrame implements Serializable {
             JOptionPane.showMessageDialog(null, "Tu id es: " + id);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    //Regresa al menu
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         Menu menu = new Menu();
         menu.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    //Valida que se ingresaran los datos para iniciar la partida
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         boolean vacio = false;

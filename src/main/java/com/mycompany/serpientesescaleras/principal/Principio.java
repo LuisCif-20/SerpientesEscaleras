@@ -149,7 +149,7 @@ public class Principio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Deja avanzar si escoge una ruta
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if (SEGUIR == 0) {
@@ -159,7 +159,7 @@ public class Principio extends javax.swing.JFrame {
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+//Selecciona la ruta
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         //Creamos el objeto JFileChooser
@@ -171,7 +171,6 @@ public class Principio extends javax.swing.JFrame {
         //Indica que el usuario selecciono el directorio
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             CreadorCargadorArchivos.setDIRECTORIO(fc.getSelectedFile().getAbsolutePath());
-            System.out.println(fc.getSelectedFile().getAbsoluteFile());
             SEGUIR = 1;
         }
 
