@@ -6,6 +6,7 @@
 package com.mycompany.serpientesescaleras.principal;
 
 import com.mycompany.serpientesescaleras.tablero.Tablero;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -41,110 +42,124 @@ public class Juego {
     //Metodos
     public void jugar() {
         int avanzarcasillas = dados.retornarSuma();
-        if (indice == 0) {
-            this.verMod(this.posicionficha1[0], avanzarcasillas, posicionficha1[1]);
-        } else if (indice == 1) {
-            this.verMod(this.posicionficha2[0], avanzarcasillas, posicionficha2[1]);
-        } else if (indice == 2) {
-            this.verMod(this.posicionficha3[0], avanzarcasillas, posicionficha3[1]);
-        } else if (indice == 3) {
-            this.verMod(this.posicionficha4[0], avanzarcasillas, posicionficha4[1]);
-        }
+        if (this.posicionficha1[0] == 9 & avanzarcasillas >= this.posicionficha1[1]) {
+            JOptionPane.showMessageDialog(null, "Gano Jugador uno");
+        } else if (this.posicionficha2[0] == 9 & avanzarcasillas >= this.posicionficha2[1]) {
+            JOptionPane.showMessageDialog(null, "Gano Jugador dos");
+        } else if (this.posicionficha3[0] == 9 & avanzarcasillas >= this.posicionficha3[1]) {
+            JOptionPane.showMessageDialog(null, "Gano Jugador tres");
+        } else if (this.posicionficha4[0] == 9 & avanzarcasillas >= this.posicionficha4[1]) {
+            JOptionPane.showMessageDialog(null, "Gano Jugador cuatro");
+        } else {
+            if (indice == 0) {
+                this.verMod(this.posicionficha1[0], avanzarcasillas, posicionficha1[1]);
+            } else if (indice == 1) {
+                this.verMod(this.posicionficha2[0], avanzarcasillas, posicionficha2[1]);
+            } else if (indice == 2) {
+                this.verMod(this.posicionficha3[0], avanzarcasillas, posicionficha3[1]);
+            } else if (indice == 3) {
+                this.verMod(this.posicionficha4[0], avanzarcasillas, posicionficha4[1]);
+            }
 
-        switch (numeroDeBucle) {
-            case 2:
-                if (indice == 0) {
-                    indice = 1;
-                } else {
-                    indice = 0;
-                }
-                break;
-            case 3:
-                switch (indice) {
-                    case 0:
+            switch (numeroDeBucle) {
+                case 2:
+                    if (indice == 0) {
                         indice = 1;
-                        break;
-                    case 1:
-                        indice = 2;
-                        break;
-                    default:
+                    } else {
                         indice = 0;
-                        break;
-                }
-                break;
-            case 4:
-                switch (indice) {
-                    case 0:
-                        indice = 1;
-                        break;
-                    case 1:
-                        indice = 2;
-                        break;
-                    case 2:
-                        indice = 3;
-                        break;
-                    default:
-                        indice = 0;
-                        break;
-                }
-                break;
-            default:
-                break;
-        }
-        JOptionPane.showMessageDialog(null, "Turno Jugador: " + (indice + 1));
+                    }
+                    break;
+                case 3:
+                    switch (indice) {
+                        case 0:
+                            indice = 1;
+                            break;
+                        case 1:
+                            indice = 2;
+                            break;
+                        default:
+                            indice = 0;
+                            break;
+                    }
+                    break;
+                case 4:
+                    switch (indice) {
+                        case 0:
+                            indice = 1;
+                            break;
+                        case 1:
+                            indice = 2;
+                            break;
+                        case 2:
+                            indice = 3;
+                            break;
+                        default:
+                            indice = 0;
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            JOptionPane.showMessageDialog(null, "Turno Jugador: " + (indice + 1));
 
+        }
     }
 
     public void moverFichaPar(int numero, int avanzarCasillas, int x, int y) {
         int limite = celdas.getTablero()[x].length;
         int disponibles = limite - y - 1;
         if (avanzarCasillas > disponibles) {
-            celdas.setFicha1(celdas.getTablero()[x][y]);
             if (avanzarCasillas > limite) {
                 int residuo = avanzarCasillas - disponibles;
                 int posicion = limite - residuo;
+                celdas.getTablero()[x][y].setIcon(null);
                 celdas.getCelda().ponerIcono(numero, celdas.getTablero()[x + 1][posicion]);
                 this.cambiarPosicion(x + 1, posicion);
             } else if (avanzarCasillas < limite) {
-                int residuo = limite - avanzarCasillas;
+                int residuo = avanzarCasillas - disponibles;
                 int posicion = limite - residuo;
+                celdas.getTablero()[x][y].setIcon(null);
                 celdas.getCelda().ponerIcono(numero, celdas.getTablero()[x + 1][posicion]);
-                this.cambiarPosicion(x + 1, posicion);
             } else {
-                int residuo = limite - disponibles;
-                int posicion = limite - residuo;
+                int posicion = disponibles;
+                celdas.getTablero()[x][y].setIcon(null);
                 celdas.getCelda().ponerIcono(numero, celdas.getTablero()[x + 1][posicion]);
                 this.cambiarPosicion(x + 1, posicion);
             }
         } else {
-            celdas.setFicha1(celdas.getTablero()[x][y]);
+            celdas.getTablero()[x][y].setIcon(null);
             celdas.getCelda().ponerIcono(numero, celdas.getTablero()[x][y + avanzarCasillas]);
             this.cambiarPosicion(x, y + avanzarCasillas);
         }
     }
 
     public void moverFichaImpar(int numero, int avanzarCasillas, int x, int y) {
-        int limite = celdas.getTablero()[x].length;
-        int disponibles =  y;
+        int limite = celdas.getTablero()[x].length - 1;
+        int disponibles = y;
+        celdas.getTablero()[x][y].setIcon(null);
         if (avanzarCasillas > disponibles) {
             if (avanzarCasillas > limite) {
-                celdas.setFicha1(celdas.getTablero()[x][y]);
+                if (disponibles == 0) {
+                    int residuo = avanzarCasillas - limite;
+                    int posicion = limite - residuo;
+                    celdas.getCelda().ponerIcono(numero, celdas.getTablero()[x + 1][posicion]);
+                    this.cambiarPosicion(x + 1, posicion);
+                } else {
+                    int residuo = avanzarCasillas - disponibles - 1;
+                    celdas.getCelda().ponerIcono(numero, celdas.getTablero()[x + 1][residuo]);
+                    this.cambiarPosicion(x + 1, residuo);
+                }
+            } else if (avanzarCasillas < limite) {
                 int residuo = avanzarCasillas - disponibles - 1;
                 celdas.getCelda().ponerIcono(numero, celdas.getTablero()[x + 1][residuo]);
                 this.cambiarPosicion(x + 1, residuo);
-            } else if (avanzarCasillas < limite) {
-                celdas.setFicha1(celdas.getTablero()[x][y]);
-                int residuo = limite - avanzarCasillas;
-                celdas.getCelda().ponerIcono(numero, celdas.getTablero()[x + 1][residuo]);
-                this.cambiarPosicion(x + 1, residuo);
             } else {
-                celdas.setFicha1(celdas.getTablero()[x][y]);
-                int residuo = limite - disponibles -1;
+                int residuo = limite - disponibles - 1;
                 celdas.getCelda().ponerIcono(numero, celdas.getTablero()[x + 1][residuo]);
                 this.cambiarPosicion(x + 1, residuo);
             }
         } else {
-            celdas.setFicha1(celdas.getTablero()[x][y]);
             celdas.getCelda().ponerIcono(numero, celdas.getTablero()[x][y - avanzarCasillas]);
             this.cambiarPosicion(x, y - avanzarCasillas);
         }
@@ -173,6 +188,18 @@ public class Juego {
         } else {
             this.posicionficha4[0] = x;
             this.posicionficha4[1] = y;
+        }
+    }
+
+    public void cambiarIcono() {
+        if (indice == 0) {
+
+        } else if (indice == 1) {
+
+        } else if (indice == 2) {
+        
+        }else  {
+            
         }
     }
 
