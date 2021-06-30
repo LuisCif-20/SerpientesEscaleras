@@ -20,7 +20,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.mycompany.serpientesescaleras.principal.Principio</mainClass>
+                            <mainClass>com.mycompany.serpientesescaleras.principal.Principal</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
