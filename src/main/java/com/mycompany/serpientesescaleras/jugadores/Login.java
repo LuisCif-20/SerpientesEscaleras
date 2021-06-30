@@ -349,6 +349,7 @@ public class Login extends javax.swing.JFrame implements Serializable {
                             } catch (IOException | ClassNotFoundException ex) {
                                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                             }
+                            this.setVisible(false);
                         } else {
                             JOptionPane.showMessageDialog(null, "No se encontro el id del Jugador 3");
                         }
@@ -370,6 +371,7 @@ public class Login extends javax.swing.JFrame implements Serializable {
                                 } catch (IOException | ClassNotFoundException ex) {
                                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                                 }
+                                this.setVisible(false);
                             } else {
                                 JOptionPane.showMessageDialog(null, "No se encontro el id del jugador 4");
                             }
