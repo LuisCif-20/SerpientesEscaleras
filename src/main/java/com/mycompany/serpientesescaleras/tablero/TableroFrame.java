@@ -5,6 +5,9 @@
  */
 package com.mycompany.serpientesescaleras.tablero;
 
+import com.mycompany.serpientesescaleras.jugadores.Jugador;
+import com.mycompany.serpientesescaleras.principal.Juego;
+
 /**
  *
  * @author nroda
@@ -12,16 +15,53 @@ package com.mycompany.serpientesescaleras.tablero;
 public class TableroFrame extends javax.swing.JFrame {
 
     //Atributos
-    private Tablero tablero;
+    private Juego juego;
+    private final int NUMERO;
     /**
      * Creates new form TableroFrame
+     * @param numero
      */
-    public TableroFrame() {
+    public TableroFrame(int numero) {
+        this.NUMERO = numero;
         initComponents();
         this.setVisible(true);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        tablero = new Tablero(this.jPanel2);
+    }
+
+    
+    //Metodos
+    public void obtenerJugadores(Jugador uno, Jugador dos){
+        String texto1 = "<html><body>"+"   "+"Jugador 1 <br>"+"   "+"Nombre: "+uno.getNombreJugador()+"<br>"+"   "+"Apellido: " +uno.getApellidoJugador()+ "<br>"+"   "+"Id: "+uno.getIdJugador()+ "</body></html>";
+        String texto2 = "<html><body>"+"   "+"Jugador 2 <br>"+"   "+"Nombre: "+dos.getNombreJugador()+"<br>"+"   "+"Apellido: " +dos.getApellidoJugador()+ "<br>"+"   "+"Id: "+dos.getIdJugador()+ "</body></html>";
+        this.jLabel1.setText(texto1);
+        this.jLabel2.setText(texto2);
+        this.jLabel3.setText("");
+        this.jLabel4.setText("");
+        juego = new Juego(this.jPanel2, NUMERO);
+    }
+    
+    public void obtenerJugadores(Jugador uno, Jugador dos, Jugador tres){
+        String texto1 = "<html><body>"+"   "+"Jugador 1 <br>"+"   "+"Nombre: "+uno.getNombreJugador()+"<br>"+"   "+"Apellido: " +uno.getApellidoJugador()+ "<br>"+"   "+"Id: "+uno.getIdJugador()+ "</body></html>";
+        String texto2 = "<html><body>"+"   "+"Jugador 2 <br>"+"   "+"Nombre: "+dos.getNombreJugador()+"<br>"+"   "+"Apellido: " +dos.getApellidoJugador()+ "<br>"+"   "+"Id: "+dos.getIdJugador()+ "</body></html>";
+        String texto3 = "<html><body>"+"   "+"Jugador 3 <br>"+"   "+"Nombre: "+tres.getNombreJugador()+"<br>"+"   "+"Apellido: " +tres.getApellidoJugador()+ "<br>"+"   "+"Id: "+tres.getIdJugador()+ "</body></html>";
+        this.jLabel1.setText(texto1);
+        this.jLabel2.setText(texto2);
+        this.jLabel3.setText(texto3);
+        this.jLabel4.setText("");
+        juego = new Juego(this.jPanel2, NUMERO);
+    }
+    
+    public void obtenerJugadores(Jugador uno, Jugador dos, Jugador tres, Jugador cuatro){
+        String texto1 = "<html><body>"+"   "+"Jugador 1 <br>"+"   "+"Nombre: "+uno.getNombreJugador()+"<br>"+"   "+"Apellido: " +uno.getApellidoJugador()+ "<br>"+"   "+"Id: "+uno.getIdJugador()+ "</body></html>";
+        String texto2 = "<html><body>"+"   "+"Jugador 2 <br>"+"   "+"Nombre: "+dos.getNombreJugador()+"<br>"+"   "+"Apellido: " +dos.getApellidoJugador()+ "<br>"+"   "+"Id: "+dos.getIdJugador()+ "</body></html>";
+        String texto3 = "<html><body>"+"   "+"Jugador 3 <br>"+"   "+"Nombre: "+tres.getNombreJugador()+"<br>"+"   "+"pellido: " +tres.getApellidoJugador()+ "<br>"+"   "+"Id: "+tres.getIdJugador()+ "</body></html>";
+        String texto4 = "<html><body>"+"   "+"Jugador 4 <br>"+"   "+"Nombre: "+cuatro.getNombreJugador()+"<br>"+"   "+"Apellido: " +cuatro.getApellidoJugador()+ "<br>"+"   "+"Id: "+cuatro.getIdJugador()+ "</body></html>";
+        this.jLabel1.setText(texto1);
+        this.jLabel2.setText(texto2);
+        this.jLabel3.setText(texto3);
+        this.jLabel4.setText(texto4);
+        juego = new Juego(this.jPanel2, NUMERO);
     }
 
     /**
@@ -34,35 +74,16 @@ public class TableroFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 153));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
-
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
-
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        jPanel1.setBackground(new java.awt.Color(51, 0, 51));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -77,35 +98,72 @@ public class TableroFrame extends javax.swing.JFrame {
             .addGap(0, 358, Short.MAX_VALUE)
         );
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Tirar Dados");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel1.setFont(new java.awt.Font("Maiandra GD", 1, 12)); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setOpaque(true);
+
+        jLabel2.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel2.setFont(new java.awt.Font("Maiandra GD", 1, 12)); // NOI18N
+        jLabel2.setText("jLabel2");
+        jLabel2.setOpaque(true);
+
+        jLabel3.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel3.setFont(new java.awt.Font("Maiandra GD", 1, 12)); // NOI18N
+        jLabel3.setText("jLabel3");
+        jLabel3.setOpaque(true);
+
+        jLabel4.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel4.setFont(new java.awt.Font("Maiandra GD", 1, 12)); // NOI18N
+        jLabel4.setText("jLabel4");
+        jLabel4.setOpaque(true);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(92, 92, 92)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(98, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(120, 120, 120)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -121,6 +179,11 @@ public class TableroFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        juego.jugar();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,21 +215,17 @@ public class TableroFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TableroFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
     // End of variables declaration//GEN-END:variables
 }

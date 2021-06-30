@@ -19,31 +19,31 @@ public class ManejadorExcepciones {
     //Metodos
     //Verifica que se ingresaron los dos iD
     public static void evaluarCampoVacioId(String uno, String dos) throws ExceptionVacio{
-        if (uno.isEmpty()) {
+        if (uno.isBlank()) {
             throw new ExceptionVacio("Ingresa el id del primer Jugador");
-        } else if (dos.isEmpty()){
+        } else if (dos.isBlank()){
             throw new ExceptionVacio("Ingresa el id del segundo Jugador");
         }
     }
     //Verifica que se ingresaron los tres id
     public static void evaluarCampoVacioId(String uno, String dos, String tres) throws ExceptionVacio{
-        if (uno.isEmpty()) {
+        if (uno.isBlank()) {
             throw new ExceptionVacio("Ingresa el id del primer Jugador");
-        } else if (dos.isEmpty()){
+        } else if (dos.isBlank()){
             throw new ExceptionVacio("Ingresa el id del segundo Jugador");
-        } else if (tres.isEmpty()) {
+        } else if (tres.isBlank()) {
            throw new ExceptionVacio("Ingresa el id del tercer Jugador");
         }
     }
     //Verifica que se ingresaron los cuatro id
     public static void evaluarCampoVacioId(String uno, String dos, String tres, String cuatro) throws ExceptionVacio{
-        if (uno.isEmpty()) {
+        if (uno.isBlank()) {
             throw new ExceptionVacio("Ingresa el id del primer Jugador");
-        } else if (dos.isEmpty()){
+        } else if (dos.isBlank()){
             throw new ExceptionVacio("Ingresa el id del segundo Jugador");
-        } else if (tres.isEmpty()) {
+        } else if (tres.isBlank()) {
             throw new ExceptionVacio("Ingresa el id del tercer Jugador");
-        } else if (cuatro.isEmpty()) {
+        } else if (cuatro.isBlank()) {
             throw new ExceptionVacio("Ingresa el id del cuarto Jugador");
         }
     }

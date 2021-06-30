@@ -16,7 +16,12 @@ public class Tablero {
 
     //Atributos
     private final JLabel tablero[][] = new JLabel[10][10];
+    private final Celda celda = new Celda();
     private final JPanel panelTablero;
+    private JLabel ficha1;
+    private JLabel ficha2;
+    private JLabel ficha3;
+    private JLabel ficha4;
 
     //Constructor
     public Tablero(JPanel panelTablero) {
@@ -28,7 +33,7 @@ public class Tablero {
             int limite = (x + 1) * 10;
             for (int y = 0; y < tablero[x].length; y++) {
                 tablero[x][y] = new JLabel();
-                tablero[x][y].setBounds(i, j, 51, 42);
+                tablero[x][y].setBounds(i, j, 51, 36);
                 if (x % 2 == 0) {
                     tablero[x][y].setText("      " + indice + "");
                     indice++;
@@ -55,7 +60,7 @@ public class Tablero {
                 }
                 this.panelTablero.setBounds(i, j, 500, 400);
                 panelTablero.add(tablero[x][y]);
-                j += 35;
+                j += 36;
             }
             i += 51;
             j = 0;
@@ -64,4 +69,49 @@ public class Tablero {
 
     //Metodos
     //Getters y Setters
+
+    public JLabel getFicha1() {
+        return ficha1;
+    }
+
+    public void setFicha1(JLabel ficha1) {
+        this.ficha1 = ficha1;
+    }
+
+    public JLabel getFicha2() {
+        return ficha2;
+    }
+
+    public void setFicha2(JLabel ficha2) {
+        this.ficha2 = ficha2;
+    }
+
+    public JLabel getFicha3() {
+        return ficha3;
+    }
+
+    public void setFicha3(JLabel ficha3) {
+        this.ficha3 = ficha3;
+    }
+
+    public JLabel getFicha4() {
+        return ficha4;
+    }
+
+    public void setFicha4(JLabel ficha4) {
+        this.ficha4 = ficha4;
+    }
+
+    public JLabel[][] getTablero() {
+        return tablero;
+    }
+
+    public Celda getCelda() {
+        return celda;
+    }
+
+    public JPanel getPanelTablero() {
+        return panelTablero;
+    }
+    
 }

@@ -17,7 +17,7 @@ import javax.swing.JLabel;
  */
 public class Celda {
     //Atributos
-    
+    private final Ficha ficha = new Ficha();
     //Constructor
 
     public Celda() {
@@ -33,5 +33,15 @@ public class Celda {
     public void pintarCeldaBlanco(JLabel celda){
         celda.setOpaque(true);
         celda.setBackground(Color.WHITE);
+    }
+    
+    public void ponerTodasFichas(JLabel celda){
+        ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/ImagenesJuego/5.png"));
+        Icon fondoImagen = new ImageIcon(imagenFondo.getImage().getScaledInstance(celda.getWidth(), celda.getHeight(), Image.SCALE_DEFAULT));
+        celda.setIcon(fondoImagen);
+    }
+    
+    public void ponerIcono(int numero, JLabel celda){
+        ficha.verficarSiHayFicha(numero, celda);
     }
 }

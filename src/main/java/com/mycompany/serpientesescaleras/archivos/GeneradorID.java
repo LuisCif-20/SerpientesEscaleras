@@ -15,7 +15,7 @@ public class GeneradorID {
     
     //Atributos
     private static final String NUMEROS = "012345";
-    private static Random ale = new Random();
+    private static final Random ale = new Random();
     //Constructor
     
     //Metodos
@@ -23,14 +23,15 @@ public class GeneradorID {
         int id;
         do { 
             id = darID();   
-        } while (id == CreadorCargadorArchivos.CargarInfo(id).getIdJugador());        
+        } while (CreadorCargadorArchivos.verificarID(id));        
         return id;
     }
     
     public static int darID(){
         int id;
         String seleccion = "";
-        String[] caracteres = NUMEROS.split("");
+        String[] caracteres;
+        caracteres = NUMEROS.split("");
         for (int i = 0; i < 3; i++) {
             id = ale.nextInt(6);
             seleccion = seleccion + caracteres[id];

@@ -11,6 +11,8 @@ import com.mycompany.serpientesescaleras.excepciones.ExceptionVacio;
 import com.mycompany.serpientesescaleras.excepciones.ManejadorExcepciones;
 import com.mycompany.serpientesescaleras.imagenes.LlenadorImagenes;
 import com.mycompany.serpientesescaleras.principal.Menu;
+import com.mycompany.serpientesescaleras.tablero.Tablero;
+import com.mycompany.serpientesescaleras.tablero.TableroFrame;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -26,6 +28,14 @@ public class Login extends javax.swing.JFrame implements Serializable {
     //Atributos
     private final int numero;
     private final LlenadorImagenes llenar = new LlenadorImagenes();
+    private String campo1;
+    private String campo2;
+    private String campo3;
+    private String campo4;
+    private int campo01;
+    private int campo02;
+    private int campo03;
+    private int campo04;
 
     /**
      * Creates new form Login
@@ -42,8 +52,11 @@ public class Login extends javax.swing.JFrame implements Serializable {
         if (numero == 2) {
             this.jFormattedTextField3.setEnabled(false);
             this.jFormattedTextField4.setEnabled(false);
+            this.jFormattedTextField3.setText("0");
+            this.jFormattedTextField4.setText("0");
         } else if (numero == 3) {
             this.jFormattedTextField4.setEnabled(false);
+            this.jFormattedTextField4.setText("0");
         }
         this.jButton3.setToolTipText("Regresar");
         this.jButton3.setIcon(llenar.editarFlecha(this.jButton3));
@@ -267,12 +280,13 @@ public class Login extends javax.swing.JFrame implements Serializable {
         Menu menu = new Menu();
         menu.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-    //Valida que se ingresaran los datos para iniciar la partida
+
+//Valida que se ingresaran los datos para iniciar la partida
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         boolean vacio = false;
 
-        switch (numero) {
+        switch (this.numero) {
             case 2:
                 try {
                 ManejadorExcepciones.evaluarCampoVacioId(jFormattedTextField1.getText(), jFormattedTextField2.getText());
@@ -301,11 +315,81 @@ public class Login extends javax.swing.JFrame implements Serializable {
                 break;
         }
         if (vacio == false) {
-            Menu menu = new Menu();
-            this.setVisible(false);
-            menu.setVisible(true);
+            campo1 = this.jFormattedTextField1.getText();
+            campo2 = this.jFormattedTextField2.getText();
+            campo3 = this.jFormattedTextField3.getText();
+            campo4 = this.jFormattedTextField4.getText();
+            campo01 = Integer.valueOf(campo1.trim());
+            campo02 = Integer.valueOf(campo2.trim());
+            campo03 = Integer.valueOf(campo3.trim());
+            campo04 = Integer.valueOf(campo4.trim());
+            if (this.numero == 2) {
+                if (CreadorCargadorArchivos.verificarID(campo01)) {
+                    if (CreadorCargadorArchivos.verificarID(campo02)) {
+                        TableroFrame tablero = new TableroFrame(this.numero);
+                        try {
+                            tablero.obtenerJugadores(CreadorCargadorArchivos.CargarInfo(campo01), CreadorCargadorArchivos.CargarInfo(campo02));
+                        } catch (IOException | ClassNotFoundException ex) {
+                            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        this.setVisible(false);
+                    } else {
+                        JOptionPane.showConfirmDialog(null, "No se encontro el id del jugador 2");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontro el id del jugador 1");
+                }
+            } else if (this.numero == 3) {
+                if (CreadorCargadorArchivos.verificarID(campo01)) {
+                    if (CreadorCargadorArchivos.verificarID(campo02)) {
+                        if (CreadorCargadorArchivos.verificarID(campo03)) {
+                            TableroFrame tablero = new TableroFrame(this.numero);
+                            try {
+                                tablero.obtenerJugadores(CreadorCargadorArchivos.CargarInfo(campo01), CreadorCargadorArchivos.CargarInfo(campo02), CreadorCargadorArchivos.CargarInfo(campo03));
+                            } catch (IOException | ClassNotFoundException ex) {
+                                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se encontro el id del Jugador 3");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se encontro el id del Jugador 2");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontro el id del jugador 1");
+                }
+            } else {
+                if (CreadorCargadorArchivos.verificarID(campo01)) {
+                    if (CreadorCargadorArchivos.verificarID(campo02)) {
+                        if (CreadorCargadorArchivos.verificarID(campo03)) {
+                            if (CreadorCargadorArchivos.verificarID(campo04)) {
+                                TableroFrame tablero = new TableroFrame(this.numero);
+                                try {
+                                    tablero.obtenerJugadores(CreadorCargadorArchivos.CargarInfo(campo01), CreadorCargadorArchivos.CargarInfo(campo02), CreadorCargadorArchivos.CargarInfo(campo03), CreadorCargadorArchivos.CargarInfo(campo04));
+                                } catch (IOException | ClassNotFoundException ex) {
+                                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(null, "No se encontro el id del jugador 4");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se encontro el id del jugador 3");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se encontro el id del jugador 2");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontro el id del jugador 1");
+                }
+            }
+
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    public void verVacio() {
+
+    }
 
     /**
      * @param args the command line arguments

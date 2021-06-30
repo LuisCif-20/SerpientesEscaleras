@@ -30,6 +30,12 @@ public class LlenadorImagenes {
         return fondoImagen;
     }
     
+    public Icon fondoJLabel(int numero, JLabel celda){
+        ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/ImagenesJuego/"+numero+".png"));
+        Icon fondoImagen = new ImageIcon(imagenFondo.getImage().getScaledInstance(celda.getWidth(), celda.getHeight(), Image.SCALE_DEFAULT));
+        return fondoImagen;
+    }
+    
     //Getters y setters
 
     
